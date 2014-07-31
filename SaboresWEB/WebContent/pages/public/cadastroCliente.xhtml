@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dados="http://java.sun.com/jsf/composite/componentes/dados"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>CADASTRO | CLIENTES</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panelGrid columns="1">
+			<dados:dadosGeraisEmpresa
+				seguimento="#{clienteMB.cliente.seguimento}"
+				nome_do_contato="#{clienteMB.cliente.nomeDoContato}"
+				ie="#{clienteMB.cliente.ie}" cnpj="#{clienteMB.cliente.cnpj}"
+				razao_social="#{clienteMB.cliente.razaoSocial}"
+				site_do_cliente="#{clienteMB.cliente.siteDoCliente}" />
+
+			<dados:cadastroEmails
+				email_principal="#{clienteMB.emailMB.email.emailPrincipal}"
+				email_alternativo1="#{clienteMB.emailMB.email.emailAlternativo1}"
+				email_alternativo2="#{clienteMB.emailMB.email.emailAlternativo2}"
+				email_alternativo3="#{clienteMB.emailMB.email.emailAlternativo3}"
+				email_alternativo4="#{clienteMB.emailMB.email.emailAlternativo4}" />
+
+			<dados:cadastroTelefones
+				fixo_principal="#{clienteMB.telefoneMB.telefone.telefonePrincipal}"
+				fixo_alternativo="#{clienteMB.telefoneMB.telefone.telefoneAlternativo}"
+				cel_principal="#{clienteMB.telefoneMB.telefone.celularPrincipal}"
+				cel_alternativo="#{clienteMB.telefoneMB.telefone.celularAlternativo}"
+				fax="#{clienteMB.telefoneMB.telefone.fax}" />
+
+			<dados:endereco 
+				tipo_de_endereco="ESTABELECIMENTO"
+				valor_cep="#{clienteMB.enderecoMB.endereco.cep}"
+				valor_tipo="#{clienteMB.enderecoMB.endereco.tipoLogradouro}"
+				valor_logradouro="#{clienteMB.enderecoMB.endereco.logradouro}"
+				valor_numero="#{clienteMB.enderecoMB.endereco.numero}"
+				valor_bairro="#{clienteMB.enderecoMB.endereco.bairro}"
+				valor_estado="#{clienteMB.enderecoMB.endereco.uf}"
+				valor_cidade="#{clienteMB.enderecoMB.endereco.cidade}"
+				valor_pais="#{clienteMB.enderecoMB.endereco.pais}"
+				valor_lista_estados="#{clienteMB.enderecoMB.listaDeEstados}"
+				valor_lista_cidades="#{clienteMB.enderecoMB.listaDeCidades}" />
+
+			<dados:endereco
+				tipo_de_endereco="ENTREGA"
+				valor_cep="#{clienteMB.enderecoMB.endereco.cep}"
+				valor_tipo="#{clienteMB.enderecoMB.endereco.tipoLogradouro}"
+				valor_logradouro="#{clienteMB.enderecoMB.endereco.logradouro}"
+				valor_numero="#{clienteMB.enderecoMB.endereco.numero}"
+				valor_bairro="#{clienteMB.enderecoMB.endereco.bairro}"
+				valor_estado="#{clienteMB.enderecoMB.endereco.uf}"
+				valor_cidade="#{clienteMB.enderecoMB.endereco.cidade}"
+				valor_pais="#{clienteMB.enderecoMB.endereco.pais}"
+				valor_lista_estados="#{clienteMB.enderecoMB.listaDeEstados}"
+				valor_lista_cidades="#{clienteMB.enderecoMB.listaDeCidades}" />
+
+			<dados:endereco 
+				tipo_de_endereco="COBRANÇA"
+				valor_cep="#{clienteMB.enderecoMB.endereco.cep}"
+				valor_tipo="#{clienteMB.enderecoMB.endereco.tipoLogradouro}"
+				valor_logradouro="#{clienteMB.enderecoMB.endereco.logradouro}"
+				valor_numero="#{clienteMB.enderecoMB.endereco.numero}"
+				valor_bairro="#{clienteMB.enderecoMB.endereco.bairro}"
+				valor_estado="#{clienteMB.enderecoMB.endereco.uf}"
+				valor_cidade="#{clienteMB.enderecoMB.endereco.cidade}"
+				valor_pais="#{clienteMB.enderecoMB.endereco.pais}"
+				valor_lista_estados="#{clienteMB.enderecoMB.listaDeEstados}"
+				valor_lista_cidades="#{clienteMB.enderecoMB.listaDeCidades}" />
+			<p:panelGrid columns="2">
+				<p:commandButton value="Enviar" />
+				<p:commandButton value="Cancelar" />
+			</p:panelGrid>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

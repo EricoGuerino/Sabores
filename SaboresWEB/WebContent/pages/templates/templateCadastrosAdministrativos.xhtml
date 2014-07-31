@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<title></title>
+</h:head> 
+<body> 
+	<h:form id="formMenu">
+		<p:commandLink value="Cadastrar Categoria" action="toCadastroCategoria"/> <br />
+		<p:commandLink value="Cadastrar Fabricante" action="toCadastroFabricante"/> <br />
+		<p:commandLink value="Cadastrar Tipo de Estabelecimento" action="toCadastroTipoEstabelecimento"/> <br />
+		<p:commandLink value="Cadastrar Produto"/> <br />
+		<p:commandLink value="Cadastrar Preço"/> <br />
+		<p:commandLink value="Cadastrar Estoque"/> <br /><br />
+	</h:form>
+	<h:form id="formUiInsert">
+		<p:commandLink value="administracao" action="toAdministracao"/>
+		<p:growl id="msgs"/>
+		<ui:insert name="cadastrar"></ui:insert>
+	</h:form>
+</body> 
+</html>
