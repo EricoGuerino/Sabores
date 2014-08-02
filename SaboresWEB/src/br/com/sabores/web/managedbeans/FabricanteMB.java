@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -19,7 +20,7 @@ import br.com.sabores.web.control.FabricanteController;
 @Named
 @RequestScoped
 public class FabricanteMB implements Serializable
-{
+{ 
 	
 	private Fabricante fabricante;
 	private List<Fabricante> allFabricantes;
@@ -36,14 +37,29 @@ public class FabricanteMB implements Serializable
 		this.fabricante = new Fabricante();
 	}
 	
+	@PreDestroy
+	public void destroy()
+	{
+		this.fabricante = null;
+		allFabricantes.clear();
+		allFabricantes = null;
+	}
+	
 	public void salvarFabricante()
 	{
-		getFabricanteController().saveController(getFabricante());
+		getFabricanteController().saveController(this.fabricante);
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
+				"Inserção de Fabricante Concluída", getFabricante().getFabricante());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        this.fabricante = new Fabricante();
 	}
 	
 	public void alterarFabricante()
 	{
-		getFabricanteController().alterarController(getFabricante());
+		getFabricanteController().alterarController(this.fabricante);
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
+				"Alteração de Fabricante Concluída", getFabricante().getFabricante());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	
 	public void onRowEdit(RowEditEvent event) 
@@ -64,10 +80,11 @@ public class FabricanteMB implements Serializable
 
     public String removerFabricante()
 	{
-		getFabricanteController().deleteController(getFabricante());
+		getFabricanteController().deleteController(this.fabricante);
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
 				"Remoção de Fabricante Concluído", getFabricante().getFabricante());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        init();
         return "refresh";
 	}
 	

@@ -10,14 +10,14 @@
 	<h:form id="formMenu">
 		<p:commandLink value="Categorias" action="toCategorias"/> <br />
 		<p:commandLink value="Fabricantes" action="toFabricantes"/> <br />
-		<p:commandLink value="Tipos de Estabelecimento" /> <br />
+		<p:commandLink value="Tipos de Estabelecimento" action="toTiposEstabelecimento"/> <br />
 		<p:commandLink value="Produtos"/> <br />
 		<p:commandLink value="Preços"/> <br />
 		<p:commandLink value="Estoques"/> <br /><br />
 	</h:form>
 	<h:form prependId="true" id="formUiDados">
 		<p:commandLink value="administracao" action="toAdministracao"/>
-		<p:growl id="msgs" showDetail="true"/>
+		<p:growl id="msgs" showDetail="true" showSummary="true"/>
 		<ui:insert name="visualizar"></ui:insert>
 	</h:form>
 </body> 

@@ -12,12 +12,13 @@
 			var title='CADASTRO | FABRICANTE';
 			document.getElementsByTagName('title')[0].innerHTML = title;
 		</script>
-		<cadastros:cadastroAdministrativo valor="#{categoriaMB.categoria.categoria}" titulo_do_cadastro="Cadastro de Categorias"/> <br />
-		<p:commandButton value="Enviar" action="#{categoriaMB.salvarCategoria()}">
+		<cadastros:cadastroAdministrativo valor="#{categoriaMB.categoria.categoria}" titulo_do_cadastro="Cadastro de Categorias"
+			requiredPlaceHolderTitle="Digite uma Categoria"/> <br />
+		<p:commandButton value="Enviar" action="#{categoriaMB.salvarCategoria()}" resetValues="true" update="@form">
 			<f:setPropertyActionListener target="#{categoriaMB.categoria}" value="#{categoriaMB.categoria}"/>
 		</p:commandButton>
 		<p:commandButton value="Cancelar" action="toCadastrosAdministrativos" immediate="true"/> <br />
-		<p:commandLink value="administracao" action="toAdministracao"/>
+		<p:commandLink value="administracao" action="toAdministracao" immediate="true"/>
 	</ui:define>	
 	
 </ui:composition>

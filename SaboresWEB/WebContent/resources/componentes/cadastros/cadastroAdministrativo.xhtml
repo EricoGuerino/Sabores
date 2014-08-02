@@ -8,12 +8,14 @@
 	<composite:interface>
 		<composite:attribute name="valor" required="true"/>
 		<composite:attribute name="titulo_do_cadastro"/>
+		<composite:attribute name="requiredPlaceHolderTitle"/>
 	</composite:interface>
 	<composite:implementation>
 		<h1><h:outputText value="#{cc.attrs.titulo_do_cadastro}"/></h1>
 		<br />
 		<p:fieldset legend="Valor">
-			<p:inputText value="#{cc.attrs.valor}"/>
+			<p:inputText value="#{cc.attrs.valor}" required="true" requiredMessage="#{cc.attrs.requiredPlaceHolderTitle}" 
+				title="#{cc.attrs.requiredPlaceHolderTitle}" placeholder="#{cc.attrs.requiredPlaceHolderTitle}" />
 		</p:fieldset>	
 	</composite:implementation>
 </html>

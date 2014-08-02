@@ -33,18 +33,13 @@
 				<p:rowEditor/>
 			</p:column>
 			<p:column headerText="Apagar">
-				<p:commandButton icon="ui-icon-close" title="Apagar Categoria" action="#{categoriaMB.removerCategoria()}" immediate="true"
-					update=":formUiDados:dtCategoria :formUiDados:msgs">
+				<p:commandButton id="btnApagarCategoria" icon="ui-icon-close" title="Apagar Categoria" action="#{categoriaMB.removerCategoria()}" 
+					immediate="true" update=":formUiDados:dtCategoria :formUiDados:msgs" widgetVar="formUiDados_btnApagarCategoria_#{rowIndex}">
 					<f:setPropertyActionListener target="#{categoriaMB.categoria}" value="#{categoria}"/>
 					<f:ajax/>
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
-		<p:commandButton value="Nova Categoria" actionListener="#{categoriaMB.show}" rendered="#{not categoriaMB.mostrarNova}" update=":formUiDados:new_cat" immediate="true"/>
-		<p:panelGrid id="new_cat" columns="3" rendered="#{categoriaMB.mostrarNova}">
-			<p:outputLabel for="nova" value="Nova Categoria"/>
-			<p:inputText id="nova" value="#{categoriaMB.categoria}"/>
-			<p:commandButton action="#{categoriaMB.salvarCategoria()}" ajax="true" update=":formUiDados:msgs :formUiDados:dtCategoria"/>
-		</p:panelGrid>
+		
 	</ui:define>
 </ui:composition>

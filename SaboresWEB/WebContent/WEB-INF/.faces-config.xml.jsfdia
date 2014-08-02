@@ -218,6 +218,12 @@
     PATH="/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml"
     TARGET="rules:#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
     TITLE="toFabricantes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toTiposEstabelecimento::#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
+    NAME="output3"
+    PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
+    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
+    TITLE="toTiposEstabelecimento" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
@@ -249,6 +255,22 @@
     NAME="output"
     PATH="/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml"
     TARGET="rules:#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
+    TITLE="refresh" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
+  PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
+  SHAPE="1080,611,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml:0"
+   NAME="item"
+   PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="refresh::#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
+    NAME="output"
+    PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
+    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
     TITLE="refresh" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>

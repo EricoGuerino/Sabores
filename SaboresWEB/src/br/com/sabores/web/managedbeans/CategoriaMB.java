@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -18,11 +19,12 @@ import br.com.sabores.web.control.CategoriaController;
 
 @SuppressWarnings("serial")
 @Named
-@SessionScoped
+@RequestScoped
 public class CategoriaMB implements Serializable
 {
 	private Categoria categoria;
 	private List<Categoria> allCategorias;
+	private Boolean mostrarNova;
 	
 	public CategoriaMB(){}
 	
@@ -37,6 +39,14 @@ public class CategoriaMB implements Serializable
 		this.categoria = new Categoria();
 	}
 	
+	@PreDestroy
+	public void destroy()
+	{
+		this.categoria = null;
+		allCategorias.clear();
+		allCategorias = null;
+	}
+	
 	public void show(ActionEvent event)
 	{
 		setMostrarNova(true);
@@ -44,7 +54,7 @@ public class CategoriaMB implements Serializable
 	
 	public void alterarCategoria()
 	{
-		categoriaController.alterarController(getCategoria());
+		categoriaController.alterarController(this.categoria);
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
 				"Alteração de Categoria Concluída", getCategoria().getCategoria());
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -66,14 +76,14 @@ public class CategoriaMB implements Serializable
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    private Boolean mostrarNova;
     
 	public void salvarCategoria()
 	{
-		getCategoriaController().saveController(getCategoria());
+		getCategoriaController().saveController(this.categoria);
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
 				"Inserção de Categoria Concluída", getCategoria().getCategoria());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        this.categoria = new Categoria();
 	}
 	
 	public String removerCategoria()
@@ -82,6 +92,7 @@ public class CategoriaMB implements Serializable
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
 				"Remoção de Categoria Concluída", getCategoria().getCategoria());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        init();
         return "refresh";
 	}
 	

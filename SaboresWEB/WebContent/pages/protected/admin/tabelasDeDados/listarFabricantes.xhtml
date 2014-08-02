@@ -19,7 +19,7 @@
 			<p:column headerText="Cód.">
 				<h:outputText value="#{fabricante.id}"/>
 			</p:column>
-			<p:column headerText="fabricante">
+			<p:column headerText="Fabricante">
 				<p:cellEditor>
 					<f:facet name="output">
 						<h:outputText value="#{fabricante.fabricante}"/>
@@ -33,10 +33,9 @@
 				<p:rowEditor/>
 			</p:column>
 			<p:column headerText="Apagar">
-				<p:commandButton icon="ui-icon-close" title="Apagar fabricante" action="#{fabricanteMB.removerFabricante()}" immediate="true"
-					update=":formUiDados:dtFabricante :formUiDados:msgs">
+				<p:commandButton id="btnApagarFabricante" icon="ui-icon-close" title="Apagar fabricante" action="#{fabricanteMB.removerFabricante()}" 
+					immediate="true" update=":formUiDados:dtFabricante :formUiDados:msgs" widgetVar="formUiDados_btnApagarFabricante_#{rowIndex}">
 					<f:setPropertyActionListener target="#{fabricanteMB.fabricante}" value="#{fabricante}"/>
-					<f:ajax/>
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>		

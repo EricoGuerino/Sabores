@@ -9,13 +9,16 @@
 	
 	<ui:define name="cadastrar">
 		<script type="text/javascript">
-			var title='CADASTRO | FABRICANTE';
+			var title='CADASTRO | TIPO DE ESTABELECIMENTO';
 			document.getElementsByTagName('title')[0].innerHTML = title;
 		</script>
 		<cadastros:cadastroAdministrativo valor="#{tipoDeEstabelecimentoMB.tipoDeEstabelecimento.tipoDeEstabelecimento}" 
-			titulo_do_cadastro="Cadastro de Tipo de Estabelecimento"/> <br />
-		<p:commandLink value="cadastros" action="toCadastrosAdministrativos"/> <br />
-		<p:commandLink value="administracao" action="toAdministracao"/>
+			titulo_do_cadastro="Cadastro de Tipo de Estabelecimento" requiredPlaceHolderTitle="Digite um Tipo de Estabelecimento"/> <br />
+		<p:commandButton value="Enviar" action="#{tipoDeEstabelecimentoMB.salvarTipoDeEstabelecimento()}" resetValues="true" update="@form">
+			<f:setPropertyActionListener target="#{tipoDeEstabelecimentoMB.tipoDeEstabelecimento}" value="#{tipoDeEstabelecimentoMB.tipoDeEstabelecimento}"/>
+		</p:commandButton>
+		<p:commandLink value="cadastros" action="toCadastrosAdministrativos" immediate="true"/> <br />
+		<p:commandLink value="administracao" action="toAdministracao" immediate="true"/>
 	</ui:define>	
 	
 </ui:composition>

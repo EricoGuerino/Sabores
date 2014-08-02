@@ -137,6 +137,10 @@
    <from-outcome>toFabricantes</from-outcome>
    <to-view-id>/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>toTiposEstabelecimento</from-outcome>
+   <to-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml</from-view-id>
@@ -150,6 +154,13 @@
   <navigation-case>
    <from-outcome>refresh</from-outcome>
    <to-view-id>/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>refresh</from-outcome>
+   <to-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application>
