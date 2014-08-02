@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cadastros="http://java.sun.com/jsf/composite/componentes/cadastros"
+	template="/pages/templates/templateTabelasDeDados.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="visualizar">
+		
+	
+	<p:dataTable id="dtTipoEstabelecimento" value="#{tipoDeEstabelecimentoMB.allTiposEstabelecimentos}" var="tipo" emptyMessage="Não há tipos de estabelecimento para serem exibidas" 
+			editable="true" rowIndexVar="rowIndex">
+		
+			<p:ajax event="rowEdit" listener="#{tipoDeEstabelecimentoMB.onRowEdit}" update=":formUiDados:msgs" />
+	       	<p:ajax event="rowEditCancel" listener="#{tipoDeEstabelecimentoMB.onRowCancel}" update=":formUiDados:msgs" />
+		
+			<p:column headerText="Cód.">
+				<h:outputText value="#{tipo.id}"/>
+			</p:column>
+			<p:column headerText="Tipo">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{tipo.tipoDeEstabelecimento}"/>
+					</f:facet>
+               		<f:facet name="input">
+               			<p:inputText id="modelInput" value="#{tipo.tipoDeEstabelecimento}" style="width:100%" />
+               		</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Alterar">
+				<p:rowEditor/>
+			</p:column>
+			<p:column headerText="Apagar">
+				<p:commandButton id="btnApagarTipo" icon="ui-icon-close" title="Apagar Tipo Estabelecimento" action="#{tipoDeEstabelecimentoMB.removerTipoDeEstabelecimento()}" 
+					immediate="true" update=":formUiDados:dtTipoEstabelecimento :formUiDados:msgs" widgetVar="formUiDados_btnApagarTipo_#{rowIndex}">
+					<f:setPropertyActionListener target="#{tipoDeEstabelecimentoMB.tipoDeEstabelecimento}" value="#{tipo}"/>
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>		
+		
+	</ui:define>
+</ui:composition>
