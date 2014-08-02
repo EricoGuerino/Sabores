@@ -7,14 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="fabricante")
 public class Fabricante implements Serializable
 {
-	@Id
-	@GeneratedValue
+	@TableGenerator(name="fabricante_gen",
+			table="id_generator",
+			pkColumnName="generator_name",
+			valueColumnName="generator_value",
+			pkColumnValue="fabricante_generator",
+			initialValue=0,
+			allocationSize=100)
+	@Id 
+	@GeneratedValue(generator="fabricante_gen")
 	@Column(name="id_fabricante")
 	private Long id;
 	

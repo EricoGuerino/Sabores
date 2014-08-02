@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -25,10 +26,17 @@ public class Cliente
 	@Transient
 	private static Date DATA_DO_CADASTRO = new Date();	
 	
-	@Id
-	@GeneratedValue
+	@TableGenerator(name="cliente_gen",
+			table="id_generator",
+			pkColumnName="generator_name",
+			valueColumnName="generator_value",
+			pkColumnValue="cliente_generator",
+			initialValue=0,
+			allocationSize=100)
+	@Id 
+	@GeneratedValue(generator="cliente_gen")
 	@Column(name="id_cliente")
-	private long id;
+	private Long id;
 	
 	@Column(unique=true,length=20,nullable=false,insertable=true,updatable=true,name="cnpj")
 	private String cnpj;

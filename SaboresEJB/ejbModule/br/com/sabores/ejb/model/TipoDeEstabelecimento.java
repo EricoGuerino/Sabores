@@ -5,13 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name="tipo_de_estabelecimento")
 public class TipoDeEstabelecimento
 {
-	@Id
-	@GeneratedValue
+	@TableGenerator(name="tipo_estabelecimento_gen",
+			table="id_generator",
+			pkColumnName="generator_name",
+			valueColumnName="generator_value",
+			pkColumnValue="tipos_generator",
+			initialValue=0,
+			allocationSize=100)
+	@Id 
+	@GeneratedValue(generator="tipo_estabelecimento_gen")
 	@Column(name="id_tipo_estab")
 	private Long id;
 	
