@@ -9,6 +9,7 @@
 	<title></title>
 </h:head> 
 <body> 
+	<ui:remove>
 	<h:form id="formMenu">
 		<p:commandLink value="Cadastrar Categoria" action="toCadastroCategoria"/> <br />
 		<p:commandLink value="Cadastrar Fabricante" action="toCadastroFabricante"/> <br />
@@ -17,10 +18,11 @@
 		<p:commandLink value="Cadastrar Preço"/> <br />
 		<p:commandLink value="Cadastrar Estoque"/> <br /><br />
 	</h:form>
-	<h:form id="formUiInsert">
+	<h:form>
 		<p:commandLink value="administracao" action="toAdministracao"/>
 		<p:growl id="msgs" autoUpdate="true" showDetail="true" showSummary="true"/>
 		<ui:insert name="cadastrar"></ui:insert>
 	</h:form>
+	</ui:remove>
 </body> 
 </html>

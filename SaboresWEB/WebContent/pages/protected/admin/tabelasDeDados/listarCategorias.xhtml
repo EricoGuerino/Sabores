@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:cadastros="http://java.sun.com/jsf/composite/componentes/cadastros"
-	template="/pages/templates/templateTabelasDeDados.xhtml"
+	template="/pages/protected/admin/administracao.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -9,7 +9,7 @@
 	
 	<ui:define name="visualizar">
 		
-	
+		<h1>Categorias</h1>
 		<p:dataTable id="dtCategoria" value="#{categoriaMB.allCategorias}" var="categoria" emptyMessage="Não há categorias para serem exibidas" 
 			editable="true" rowIndexVar="rowIndex">
 		

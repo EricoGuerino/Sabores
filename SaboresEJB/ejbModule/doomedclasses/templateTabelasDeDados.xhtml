@@ -7,6 +7,7 @@
 
 <h:head></h:head> 
 <body> 
+	<ui:remove>
 	<h:form id="formMenu">
 		<p:commandLink value="Categorias" action="toCategorias"/> <br />
 		<p:commandLink value="Fabricantes" action="toFabricantes"/> <br />
@@ -20,5 +21,6 @@
 		<p:growl id="msgs" showDetail="true" showSummary="true"/>
 		<ui:insert name="visualizar"></ui:insert>
 	</h:form>
+	</ui:remove>
 </body> 
 </html>

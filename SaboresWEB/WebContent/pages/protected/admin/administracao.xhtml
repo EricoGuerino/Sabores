@@ -5,12 +5,40 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"> 
 
-<h:head></h:head> 
+<h:head><title></title></h:head> 
 <body> 
-	<h:form>
-		<p:commandLink value="Cadastros" action="toCadastrosAdministrativos"/> <br />
-		<p:commandLink value="Tabelas de Dados" action="toTabelaDeDados"/> <br />
-		<p:commandLink value="Sabores" action="toSabores"/>
+	<h:form prependId="false">
+		<br /><br />
+		<p:menubar>
+			<p:submenu label="Cadastros">
+				<p:menuitem value="Categoria" action="toCadastroCategoria"/>
+				<p:menuitem value="Fabricante" action="toCadastroFabricante"/>
+				<p:menuitem value="Tipo de Estabelecimento" action="toCadastroTipoEstabelecimento"/>
+				<p:menuitem value="Produto"/>
+				<p:menuitem value="Preço"/>
+				<p:menuitem value="Estoque"/>
+			</p:submenu>
+			<p:submenu label="Tabelas de Dados">
+				<p:menuitem value="Categoria" action="toCategorias"/>
+				<p:menuitem value="Fabricante" action="toFabricantes"/>
+				<p:menuitem value="Tipo de Estabelecimento" action="toTiposEstabelecimento"/>
+				<p:menuitem value="Cliente"/>
+				<p:menuitem value="Produto"/>
+				<p:menuitem value="Preço"/>
+				<p:menuitem value="Estoque"/>
+				<p:menuitem value="Listas de Pedidos"/>
+			</p:submenu>
+			<p:submenu label="Relatórios">
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<h:form id="formUiInsert">
+		<p:growl id="msgs" autoUpdate="true" showDetail="true" showSummary="true"/>
+		<ui:insert name="cadastrar"></ui:insert>
+	</h:form>
+	<h:form id="formUiDados">
+		<p:growl id="msgs" showDetail="true" showSummary="true"/>
+		<ui:insert name="visualizar"></ui:insert>
 	</h:form>
 </body> 
 </html>

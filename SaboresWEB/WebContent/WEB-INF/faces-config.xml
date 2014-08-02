@@ -10,25 +10,10 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/pages/protected/admin/administracao.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>toCadastrosAdministrativos</from-outcome>
-   <to-view-id>/pages/templates/templateCadastrosAdministrativos.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toTabelaDeDados</from-outcome>
-   <to-view-id>/pages/templates/templateTabelasDeDados.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
   <from-view-id>/pages/protected/admin/cadastroCategoria.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>toAdministracao</from-outcome>
    <to-view-id>/pages/protected/admin/administracao.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toCadastrosAdministrativos</from-outcome>
-   <to-view-id>/pages/templates/templateCadastrosAdministrativos.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -37,20 +22,12 @@
    <from-outcome>toAdministracao</from-outcome>
    <to-view-id>/pages/protected/admin/administracao.xhtml</to-view-id>
   </navigation-case>
-  <navigation-case>
-   <from-outcome>toCadastrosAdministrativos</from-outcome>
-   <to-view-id>/pages/templates/templateCadastrosAdministrativos.xhtml</to-view-id>
-  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/pages/protected/admin/cadastroTipoEstabelecimento.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>toAdministracao</from-outcome>
    <to-view-id>/pages/protected/admin/administracao.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toCadastrosAdministrativos</from-outcome>
-   <to-view-id>/pages/templates/templateCadastrosAdministrativos.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -70,25 +47,6 @@
   <navigation-case>
    <from-outcome>toCadastro</from-outcome>
    <to-view-id>/pages/public/cadastroCliente.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toAdministracao</from-outcome>
-   <to-view-id>/pages/protected/admin/administracao.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/pages/templates/templateCadastrosAdministrativos.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>toCadastroTipoEstabelecimento</from-outcome>
-   <to-view-id>/pages/protected/admin/cadastroTipoEstabelecimento.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toCadastroFabricante</from-outcome>
-   <to-view-id>/pages/protected/admin/cadastroFabricante.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toCadastroCategoria</from-outcome>
-   <to-view-id>/pages/protected/admin/cadastroCategoria.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>toAdministracao</from-outcome>
@@ -124,25 +82,6 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/pages/templates/templateTabelasDeDados.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>toAdministracao</from-outcome>
-   <to-view-id>/pages/protected/admin/administracao.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toCategorias</from-outcome>
-   <to-view-id>/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toFabricantes</from-outcome>
-   <to-view-id>/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>toTiposEstabelecimento</from-outcome>
-   <to-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
   <from-view-id>/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>refresh</from-outcome>
@@ -160,6 +99,33 @@
   <from-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>refresh</from-outcome>
+   <to-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/pages/protected/admin/administracao.xhtml</from-view-id>
+  <navigation-case id="cadastroCategoria">
+   <from-outcome>toCadastroCategoria</from-outcome>
+   <to-view-id>/pages/protected/admin/cadastroCategoria.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>toCadastroFabricante</from-outcome>
+   <to-view-id>/pages/protected/admin/cadastroFabricante.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>toCadastroTipoEstabelecimento</from-outcome>
+   <to-view-id>/pages/protected/admin/cadastroTipoEstabelecimento.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>toCategorias</from-outcome>
+   <to-view-id>/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>toFabricantes</from-outcome>
+   <to-view-id>/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>toTiposEstabelecimento</from-outcome>
    <to-view-id>/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
