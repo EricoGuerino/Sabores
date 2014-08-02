@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+div
+{
+	width: 100%;
+}
+.imagem_cabecalho
+{
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+	width: 40%;
+}
