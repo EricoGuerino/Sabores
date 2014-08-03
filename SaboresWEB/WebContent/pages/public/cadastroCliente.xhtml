@@ -19,57 +19,60 @@
 				site_do_cliente="#{clienteMB.cliente.siteDoCliente}" />
 
 			<dados:cadastroEmails
-				email_principal="#{clienteMB.emailMB.email.emailPrincipal}"
-				email_alternativo1="#{clienteMB.emailMB.email.emailAlternativo1}"
-				email_alternativo2="#{clienteMB.emailMB.email.emailAlternativo2}"
-				email_alternativo3="#{clienteMB.emailMB.email.emailAlternativo3}"
-				email_alternativo4="#{clienteMB.emailMB.email.emailAlternativo4}" />
+				email_principal="#{clienteMB.cliente.email.emailPrincipal}"
+				email_alternativo1="#{clienteMB.cliente.email.emailAlternativo1}"
+				email_alternativo2="#{clienteMB.cliente.email.emailAlternativo2}"
+				email_alternativo3="#{clienteMB.cliente.email.emailAlternativo3}"
+				email_alternativo4="#{clienteMB.cliente.email.emailAlternativo4}" />
 
 			<dados:cadastroTelefones
-				fixo_principal="#{clienteMB.telefoneMB.telefone.telefonePrincipal}"
-				fixo_alternativo="#{clienteMB.telefoneMB.telefone.telefoneAlternativo}"
-				cel_principal="#{clienteMB.telefoneMB.telefone.celularPrincipal}"
-				cel_alternativo="#{clienteMB.telefoneMB.telefone.celularAlternativo}"
-				fax="#{clienteMB.telefoneMB.telefone.fax}" />
+				fixo_principal="#{clienteMB.cliente.telefone.telefonePrincipal}"
+				fixo_alternativo="#{clienteMB.cliente.telefone.telefoneAlternativo}"
+				cel_principal="#{clienteMB.cliente.telefone.celularPrincipal}"
+				cel_alternativo="#{clienteMB.cliente.telefone.celularAlternativo}"
+				fax="#{clienteMB.cliente.telefone.fax}" />
 
 			<dados:endereco 
 				tipo_de_endereco="ESTABELECIMENTO"
-				valor_cep="#{clienteMB.enderecoMB.endereco.cep}"
-				valor_tipo="#{clienteMB.enderecoMB.endereco.tipoLogradouro}"
-				valor_logradouro="#{clienteMB.enderecoMB.endereco.logradouro}"
-				valor_numero="#{clienteMB.enderecoMB.endereco.numero}"
-				valor_bairro="#{clienteMB.enderecoMB.endereco.bairro}"
-				valor_estado="#{clienteMB.enderecoMB.endereco.uf}"
-				valor_cidade="#{clienteMB.enderecoMB.endereco.cidade}"
-				valor_pais="#{clienteMB.enderecoMB.endereco.pais}"
-				valor_lista_estados="#{clienteMB.enderecoMB.listaDeEstados}"
-				valor_lista_cidades="#{clienteMB.enderecoMB.listaDeCidades}" />
+				valor_cep="#{clienteMB.endereco.cep}"
+				valor_tipo="#{clienteMB.endereco.tipoLogradouro}"
+				valor_logradouro="#{clienteMB.endereco.logradouro}"
+				valor_numero="#{clienteMB.endereco.numero}"
+				valor_bairro="#{clienteMB.endereco.bairro}"
+				valor_estado="#{clienteMB.endereco.uf}"
+				valor_cidade="#{clienteMB.endereco.cidade}"
+				valor_pais="#{clienteMB.endereco.pais}"
+				valor_lista_estados="#{enderecoMB.listaDeEstados}"
+				listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
+				valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
 
 			<dados:endereco
 				tipo_de_endereco="ENTREGA"
-				valor_cep="#{clienteMB.enderecoMB.endereco.cep}"
-				valor_tipo="#{clienteMB.enderecoMB.endereco.tipoLogradouro}"
-				valor_logradouro="#{clienteMB.enderecoMB.endereco.logradouro}"
-				valor_numero="#{clienteMB.enderecoMB.endereco.numero}"
-				valor_bairro="#{clienteMB.enderecoMB.endereco.bairro}"
-				valor_estado="#{clienteMB.enderecoMB.endereco.uf}"
-				valor_cidade="#{clienteMB.enderecoMB.endereco.cidade}"
-				valor_pais="#{clienteMB.enderecoMB.endereco.pais}"
-				valor_lista_estados="#{clienteMB.enderecoMB.listaDeEstados}"
-				valor_lista_cidades="#{clienteMB.enderecoMB.listaDeCidades}" />
+				valor_cep="#{clienteMB.endereco.cep}"
+				valor_tipo="#{clienteMB.endereco.tipoLogradouro}"
+				valor_logradouro="#{clienteMB.endereco.logradouro}"
+				valor_numero="#{clienteMB.endereco.numero}"
+				valor_bairro="#{clienteMB.endereco.bairro}"
+				valor_estado="#{clienteMB.endereco.uf}"
+				valor_cidade="#{clienteMB.endereco.cidade}"
+				valor_pais="#{clienteMB.endereco.pais}"
+				valor_lista_estados="#{enderecoMB.listaDeEstados}"
+				listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
+				valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
 
 			<dados:endereco 
 				tipo_de_endereco="COBRANÇA"
-				valor_cep="#{clienteMB.enderecoMB.endereco.cep}"
-				valor_tipo="#{clienteMB.enderecoMB.endereco.tipoLogradouro}"
-				valor_logradouro="#{clienteMB.enderecoMB.endereco.logradouro}"
-				valor_numero="#{clienteMB.enderecoMB.endereco.numero}"
-				valor_bairro="#{clienteMB.enderecoMB.endereco.bairro}"
-				valor_estado="#{clienteMB.enderecoMB.endereco.uf}"
-				valor_cidade="#{clienteMB.enderecoMB.endereco.cidade}"
-				valor_pais="#{clienteMB.enderecoMB.endereco.pais}"
-				valor_lista_estados="#{clienteMB.enderecoMB.listaDeEstados}"
-				valor_lista_cidades="#{clienteMB.enderecoMB.listaDeCidades}" />
+				valor_cep="#{clienteMB.endereco.cep}"
+				valor_tipo="#{clienteMB.endereco.tipoLogradouro}"
+				valor_logradouro="#{clienteMB.endereco.logradouro}"
+				valor_numero="#{clienteMB.endereco.numero}"
+				valor_bairro="#{clienteMB.endereco.bairro}"
+				valor_estado="#{clienteMB.endereco.uf}"
+				valor_cidade="#{clienteMB.endereco.cidade}"
+				valor_pais="#{clienteMB.endereco.pais}"
+				valor_lista_estados="#{enderecoMB.listaDeEstados}"
+				listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
+				valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
 			<p:panelGrid columns="2">
 				<p:commandButton value="Enviar" />
 				<p:commandButton value="Cancelar" />

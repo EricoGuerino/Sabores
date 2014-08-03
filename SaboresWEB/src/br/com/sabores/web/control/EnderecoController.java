@@ -6,8 +6,7 @@ import javax.ejb.EJB;
 
 import br.com.sabores.ejb.facade.EnderecoFacade;
 import br.com.sabores.ejb.model.Endereco;
-import br.com.sabores.ejb.model.cep.Cidade;
-import br.com.sabores.ejb.model.cep.UF;
+import br.com.sabores.ejb.model.cep.Estados;
 
 public class EnderecoController
 {
@@ -25,11 +24,11 @@ public class EnderecoController
 		return getEnderecoFacade().buscarEndereco(cep);
 	}
 	
-	public List<Cidade> buscarCidadesPorEstado(String sigla){
+	public List<String> buscarCidadesPorEstado(String sigla){
 		return getEnderecoFacade().buscarTodasCidadesPorEstado(sigla);
 	}
 	
-	public List<UF> buscarEstados(){
+	public List<Estados> buscarEstados(){
 		return getEnderecoFacade().buscarTodosEstados();
 	}
 	

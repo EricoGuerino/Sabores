@@ -5,13 +5,12 @@ import java.util.List;
 import javax.ejb.Local;
 
 import br.com.sabores.ejb.model.Endereco;
-import br.com.sabores.ejb.model.cep.Cidade;
-import br.com.sabores.ejb.model.cep.UF;
+import br.com.sabores.ejb.model.cep.Estados;
 
 @Local
 public interface EnderecoFacade
 {
 	Endereco buscarEndereco(String cep);
-	List<UF> buscarTodosEstados();
-	List<Cidade> buscarTodasCidadesPorEstado(String sigla);
+	List<Estados> buscarTodosEstados();
+	List<String> buscarTodasCidadesPorEstado(String sigla);
 }

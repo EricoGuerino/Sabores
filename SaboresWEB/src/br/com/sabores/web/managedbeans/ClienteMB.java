@@ -6,19 +6,17 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.sabores.ejb.model.Cliente;
+import br.com.sabores.ejb.model.Endereco;
+import br.com.sabores.web.control.EnderecoController;
 
 @Named(value="clienteMB")
 @RequestScoped
 public class ClienteMB
 {
 	@Inject
-	private EnderecoMB enderecoMB;
+	private EnderecoController enderecoController;
 	
-	@Inject
-	private EmailMB emailMB;
-	
-	@Inject
-	private TelefoneMB telefoneMB;
+	private Endereco endereco;
 	
 	private Cliente cliente;
 	
@@ -28,6 +26,7 @@ public class ClienteMB
 	public void init()
 	{
 		this.cliente = new Cliente();
+		this.endereco = new Endereco();
 	}
 	
 	public Cliente getCliente()
@@ -40,35 +39,19 @@ public class ClienteMB
 		this.cliente = cliente;
 	}
 
-	public EnderecoMB getEnderecoMB()
+	public EnderecoController getEnderecoController()
 	{
-		return enderecoMB;
-	}
-
-	public void setEnderecoMB(EnderecoMB enderecoMB)
-	{
-		this.enderecoMB = enderecoMB;
-	}
-
-	public EmailMB getEmailMB()
-	{
-		return emailMB;
-	}
-
-	public void setEmailMB(EmailMB emailMB)
-	{
-		this.emailMB = emailMB;
-	}
-
-	public TelefoneMB getTelefoneMB()
-	{
-		return telefoneMB;
-	}
-
-	public void setTelefoneMB(TelefoneMB telefoneMB)
-	{
-		this.telefoneMB = telefoneMB;
+		return enderecoController;
 	}
 	
+	public Endereco getEndereco()
+	{
+		return endereco;
+	}
+	
+	public void setEndereco(Endereco endereco)
+	{
+		this.endereco = endereco;
+	}
 	
 }

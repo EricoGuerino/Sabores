@@ -32,7 +32,7 @@ public class Cliente
 			valueColumnName="generator_value",
 			pkColumnValue="cliente_generator",
 			initialValue=0,
-			allocationSize=100)
+			allocationSize=5)
 	@Id 
 	@GeneratedValue(generator="cliente_gen")
 	@Column(name="id_cliente")
@@ -191,6 +191,10 @@ public class Cliente
 
 	public Telefone getTelefone()
 	{
+		if(this.telefone == null)
+		{
+			this.telefone = new Telefone();
+		}
 		return telefone;
 	}
 
@@ -201,6 +205,9 @@ public class Cliente
 
 	public Email getEmail()
 	{
+		if(email == null){
+			this.email = new Email();
+		}
 		return email;
 	}
 

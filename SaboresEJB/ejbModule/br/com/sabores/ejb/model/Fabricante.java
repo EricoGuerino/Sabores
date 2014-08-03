@@ -20,7 +20,7 @@ public class Fabricante implements Serializable
 			valueColumnName="generator_value",
 			pkColumnValue="fabricante_generator",
 			initialValue=0,
-			allocationSize=100)
+			allocationSize=5)
 	@Id 
 	@GeneratedValue(generator="fabricante_gen")
 	@Column(name="id_fabricante")

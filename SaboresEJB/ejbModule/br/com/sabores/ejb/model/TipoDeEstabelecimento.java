@@ -17,7 +17,7 @@ public class TipoDeEstabelecimento
 			valueColumnName="generator_value",
 			pkColumnValue="tipos_generator",
 			initialValue=0,
-			allocationSize=100)
+			allocationSize=5)
 	@Id 
 	@GeneratedValue(generator="tipo_estabelecimento_gen")
 	@Column(name="id_tipo_estab")

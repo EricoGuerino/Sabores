@@ -6,15 +6,13 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
 
 import br.com.sabores.ejb.enums.TipoEnderecoEnum;
 import br.com.sabores.ejb.enums.TipoLogradouroEnum;
-import br.com.sabores.ejb.model.cep.Estados;
 
 @Entity
 @Table(name="endereco_cliente")
@@ -23,8 +21,15 @@ public class Endereco
 	@Transient
 	private static final String BRASIL = "Brasil";
 	
-	@Id
-	@GeneratedValue
+	@TableGenerator(name="endereco_gen",
+			table="id_generator",
+			pkColumnName="generator_name",
+			valueColumnName="generator_value",
+			pkColumnValue="endereco_generator",
+			initialValue=0,
+			allocationSize=5)
+	@Id 
+	@GeneratedValue(generator="endereco_gen")
 	@Column(name="id_endereco")
 	private Long id;
 	
@@ -51,9 +56,8 @@ public class Endereco
 	@Column(length=30,nullable=false,insertable=true,updatable=true)
 	private String cidade;
 	
-	@OneToOne
-	@JoinColumn(name="sigla")
-	private Estados uf;
+	@Column(length=30,nullable=false,insertable=true,updatable=true)
+	private String uf;
 	
 	@Column(length=30,nullable=false,insertable=true,updatable=true)
 	private String pais = BRASIL;
@@ -141,12 +145,12 @@ public class Endereco
 		this.cidade = cidade;
 	}
 
-	public Estados getUf()
+	public String getUf()
 	{
 		return uf;
 	}
 
-	public void setUf(Estados uf)
+	public void setUf(String uf)
 	{
 		this.uf = uf;
 	}

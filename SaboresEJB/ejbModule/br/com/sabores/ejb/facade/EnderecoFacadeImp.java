@@ -9,8 +9,7 @@ import br.com.sabores.ejb.annotations.GenericDAO;
 import br.com.sabores.ejb.dao.EnderecoDAO;
 import br.com.sabores.ejb.enums.GenericDAOTypes;
 import br.com.sabores.ejb.model.Endereco;
-import br.com.sabores.ejb.model.cep.Cidade;
-import br.com.sabores.ejb.model.cep.UF;
+import br.com.sabores.ejb.model.cep.Estados;
 
 @Stateless
 public class EnderecoFacadeImp implements EnderecoFacade
@@ -25,13 +24,13 @@ public class EnderecoFacadeImp implements EnderecoFacade
 	}
 
 	@Override
-	public List<UF> buscarTodosEstados()
+	public List<Estados> buscarTodosEstados()
 	{
 		return enderecoDAO.buscarTodosEstados();
 	}
 
 	@Override
-	public List<Cidade> buscarTodasCidadesPorEstado(String sigla)
+	public List<String> buscarTodasCidadesPorEstado(String sigla)
 	{
 		return enderecoDAO.buscarTodasCidadesPorEstado(sigla);
 	}

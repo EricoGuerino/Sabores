@@ -19,6 +19,7 @@
 	<composite:attribute name="valor_lista_estados" type="java.util.List" />
 	<composite:attribute name="valor_lista_cidades" type="java.util.List" />
 	<composite:attribute name="valor_pais" type="java.lang.String" />
+	<composite:attribute name="listener" method-signature="java.lang.Void action()" />
 </composite:interface>
 <composite:implementation>
 	<h:form>
@@ -46,15 +47,15 @@
 
 					<p:outputLabel for="estado" value="Estado" />
 					<p:selectOneMenu id="estado" value="#{cc.attrs.valor_estado}">
-						<f:selectItem noSelectionOption="true"
-							itemLabel="Selecione um Estado..." />
-						<f:selectItems value="#{cc.attrs.valor_lista_estados}" />
+						<f:selectItem noSelectionOption="true" itemLabel="Selecione um Estado..." />
+						<f:selectItems value="#{cc.attrs.valor_lista_estados}" var="estado" itemLabel="#{estado.nomeEstado}" 
+							itemValue="#{estado.nomeEstado}"/>
+						<p:ajax listener="#{cc.attrs.listener}" process="@this" update="cidade"/>
 					</p:selectOneMenu>
 
 					<p:outputLabel for="cidade" value="Cidade" />
 					<p:selectOneMenu id="cidade" value="#{cc.attrs.valor_cidade}">
-						<f:selectItem noSelectionOption="true"
-							itemLabel="Selecione uma Cidade..." />
+						<f:selectItem noSelectionOption="true" itemLabel="Selecione uma Cidade..." />
 						<f:selectItems value="#{cc.attrs.valor_lista_cidades}" />
 					</p:selectOneMenu>
 					<p:outputLabel for="pais" value="País" />
