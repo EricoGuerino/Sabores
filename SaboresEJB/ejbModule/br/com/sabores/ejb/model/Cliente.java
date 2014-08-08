@@ -76,7 +76,7 @@ public class Cliente
 	@Embedded
 	private Email email;
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany//(mappedBy="cliente")
 	private List<Endereco> endereco;
 
 	public static Date getDATA_DO_CADASTRO()

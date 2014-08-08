@@ -6,39 +6,48 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<ui:define name="visualizar">
-		
-	<h1>Fabricantes</h1>
-	<p:dataTable id="dtFabricante" value="#{fabricanteMB.allFabricantes}" var="fabricante" emptyMessage="Não há fabricantes para serem exibidas" 
-			editable="true" rowIndexVar="rowIndex">
-		
-			<p:ajax event="rowEdit" listener="#{fabricanteMB.onRowEdit}" update=":formUiDados:msgs" />
-	       	<p:ajax event="rowEditCancel" listener="#{fabricanteMB.onRowCancel}" update=":formUiDados:msgs" />
-		
+
+		<h1>Fabricantes</h1>
+		<p:dataTable id="dtFabricante" value="#{fabricanteMB.allFabricantes}"
+			var="fabricante"
+			emptyMessage="Não há fabricantes para serem exibidas" editable="true"
+			rowIndexVar="rowIndex">
+
+			<p:ajax event="rowEdit" listener="#{fabricanteMB.onRowEdit}"
+				update=":formUiDados:msgs" />
+			<p:ajax event="rowEditCancel" listener="#{fabricanteMB.onRowCancel}"
+				update=":formUiDados:msgs" />
+
 			<p:column headerText="Cód.">
-				<h:outputText value="#{fabricante.id}"/>
+				<h:outputText value="#{fabricante.id}" />
 			</p:column>
 			<p:column headerText="Fabricante">
 				<p:cellEditor>
 					<f:facet name="output">
-						<h:outputText value="#{fabricante.fabricante}"/>
+						<h:outputText value="#{fabricante.fabricante}" />
 					</f:facet>
-               		<f:facet name="input">
-               			<p:inputText id="modelInput" value="#{fabricante.fabricante}" style="width:100%" />
-               		</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{fabricante.fabricante}"
+							style="width:100%" />
+					</f:facet>
 				</p:cellEditor>
 			</p:column>
 			<p:column headerText="Alterar">
-				<p:rowEditor/>
+				<p:rowEditor />
 			</p:column>
 			<p:column headerText="Apagar">
-				<p:commandButton id="btnApagarFabricante" icon="ui-icon-close" title="Apagar fabricante" action="#{fabricanteMB.removerFabricante()}" 
-					immediate="true" update=":formUiDados:dtFabricante :formUiDados:msgs" widgetVar="formUiDados_btnApagarFabricante_#{rowIndex}">
-					<f:setPropertyActionListener target="#{fabricanteMB.fabricante}" value="#{fabricante}"/>
+				<p:commandButton id="btnApagarFabricante" icon="ui-icon-close"
+					title="Apagar fabricante"
+					action="#{fabricanteMB.removerFabricante()}" immediate="true"
+					update=":formUiDados:dtFabricante :formUiDados:msgs"
+					widgetVar="formUiDados_btnApagarFabricante_#{rowIndex}">
+					<f:setPropertyActionListener target="#{fabricanteMB.fabricante}"
+						value="#{fabricante}" />
 				</p:commandButton>
 			</p:column>
-		</p:dataTable>		
-		
+		</p:dataTable>
+
 	</ui:define>
 </ui:composition>

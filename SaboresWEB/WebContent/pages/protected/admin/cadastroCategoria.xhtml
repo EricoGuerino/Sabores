@@ -6,17 +6,23 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<ui:define name="cadastrar">
 		<script type="text/javascript">
 			var title='CADASTRO | FABRICANTE';
 			document.getElementsByTagName('title')[0].innerHTML = title;
 		</script>
-		<cadastros:cadastroAdministrativo valor="#{categoriaMB.categoria.categoria}" titulo_do_cadastro="Cadastro de Categorias"
-			requiredPlaceHolderTitle="Digite uma Categoria"/> <br />
-		<p:commandButton value="Enviar" action="#{categoriaMB.salvarCategoria()}" resetValues="true" update="@form">
-			<f:setPropertyActionListener target="#{categoriaMB.categoria}" value="#{categoriaMB.categoria}"/>
+		<cadastros:cadastroAdministrativo
+			valor="#{categoriaMB.categoria.categoria}"
+			titulo_do_cadastro="Cadastro de Categorias"
+			requiredPlaceHolderTitle="Digite uma Categoria" />
+		<br />
+		<p:commandButton value="Enviar"
+			action="#{categoriaMB.salvarCategoria()}" resetValues="true"
+			update="@form">
+			<f:setPropertyActionListener target="#{categoriaMB.categoria}"
+				value="#{categoriaMB.categoria}" />
 		</p:commandButton>
-	</ui:define>	
-	
+	</ui:define>
+
 </ui:composition>

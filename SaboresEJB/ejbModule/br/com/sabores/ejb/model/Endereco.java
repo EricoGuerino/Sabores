@@ -62,8 +62,8 @@ public class Endereco
 	@Column(length=30,nullable=false,insertable=true,updatable=true)
 	private String pais = BRASIL;
 	
-	@ManyToOne
-	private Cliente cliente;
+//	@ManyToOne
+//	private Cliente cliente;
 
 	public Long getId()
 	{
@@ -165,16 +165,6 @@ public class Endereco
 		this.pais = pais;
 	}
 
-	public Cliente getCliente()
-	{
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente)
-	{
-		this.cliente = cliente;
-	}
-
 	@Override
 	public int hashCode()
 	{
@@ -183,7 +173,6 @@ public class Endereco
 		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
 		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((logradouro == null) ? 0 : logradouro.hashCode());
@@ -207,42 +196,44 @@ public class Endereco
 		if (getClass() != obj.getClass())
 			return false;
 		Endereco other = (Endereco) obj;
-		if (bairro == null) {
+		if (bairro == null)
+		{
 			if (other.bairro != null)
 				return false;
 		} else if (!bairro.equals(other.bairro))
 			return false;
-		if (cep == null) {
+		if (cep == null)
+		{
 			if (other.cep != null)
 				return false;
 		} else if (!cep.equals(other.cep))
 			return false;
-		if (cidade == null) {
+		if (cidade == null)
+		{
 			if (other.cidade != null)
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
-		if (id == null) {
+		if (id == null)
+		{
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (logradouro == null) {
+		if (logradouro == null)
+		{
 			if (other.logradouro != null)
 				return false;
 		} else if (!logradouro.equals(other.logradouro))
 			return false;
-		if (numero == null) {
+		if (numero == null)
+		{
 			if (other.numero != null)
 				return false;
 		} else if (!numero.equals(other.numero))
 			return false;
-		if (pais == null) {
+		if (pais == null)
+		{
 			if (other.pais != null)
 				return false;
 		} else if (!pais.equals(other.pais))
@@ -251,13 +242,25 @@ public class Endereco
 			return false;
 		if (tipoLogradouro != other.tipoLogradouro)
 			return false;
-		if (uf == null) {
+		if (uf == null)
+		{
 			if (other.uf != null)
 				return false;
 		} else if (!uf.equals(other.uf))
 			return false;
 		return true;
 	}
+
+//	public Cliente getCliente()
+//	{
+//		return cliente;
+//	}
+//
+//	public void setCliente(Cliente cliente)
+//	{
+//		this.cliente = cliente;
+//	}
+
 	
 	
 }

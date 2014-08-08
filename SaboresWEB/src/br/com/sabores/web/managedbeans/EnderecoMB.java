@@ -1,6 +1,7 @@
 package br.com.sabores.web.managedbeans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.sabores.ejb.enums.TipoLogradouroEnum;
 import br.com.sabores.ejb.model.Endereco;
 import br.com.sabores.ejb.model.cep.Estados;
 import br.com.sabores.web.control.EnderecoController;
@@ -20,7 +22,10 @@ public class EnderecoMB
 	//TODO alterar tipo destas listas
 	private List<Estados> listaDeEstados;
 	private List<String> listaDeCidades;
+	private List<TipoLogradouroEnum> listaTiposLogradouros;
 	private Estados estados;
+	private boolean cobranca;
+	private boolean entrega;
 	
 	public EnderecoMB(){}
 	
@@ -30,6 +35,7 @@ public class EnderecoMB
 	@PostConstruct
 	public void init()
 	{
+		this.listaTiposLogradouros = new ArrayList<>(Arrays.asList(TipoLogradouroEnum.values()));
 		this.listaDeEstados = new ArrayList<>(getEnderecoController().buscarEstados());
 		this.endereco = new Endereco();
 	}
@@ -38,6 +44,30 @@ public class EnderecoMB
 	{
 		this.estados = new Estados();
 		this.listaDeCidades = new ArrayList<>(getEnderecoController().buscarCidadesPorEstado(this.estados.getSigla()));
+	}
+	
+	public void mostrarEntrega()
+	{
+		if(this.entrega == false)
+		{
+			this.entrega = true;
+		} 
+		else
+		{
+			this.entrega = false;
+		}
+	}
+	
+	public void mostrarCobranca()
+	{
+		if(this.cobranca == false)
+		{
+			this.cobranca = true;
+		}
+		else
+		{
+			this.cobranca = false;
+		}
 	}
 	
 	public Endereco getEndereco()
@@ -83,5 +113,33 @@ public class EnderecoMB
 	public Estados getEstados()
 	{
 		return estados;
+	}
+
+	
+	public boolean isCobranca()
+	{
+		return cobranca;
+	}
+
+	
+	public void setCobranca(boolean cobranca)
+	{
+		this.cobranca = cobranca;
+	}
+
+	
+	public boolean isEntrega()
+	{
+		return entrega;
+	}
+
+	public void setEntrega(boolean entrega)
+	{
+		this.entrega = entrega;
+	}
+	
+	public List<TipoLogradouroEnum> getListaTiposLogradouros()
+	{
+		return listaTiposLogradouros;
 	}
 }

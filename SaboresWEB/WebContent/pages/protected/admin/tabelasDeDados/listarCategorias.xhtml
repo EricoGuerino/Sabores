@@ -6,40 +6,48 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<ui:define name="visualizar">
-		
+
 		<h1>Categorias</h1>
-		<p:dataTable id="dtCategoria" value="#{categoriaMB.allCategorias}" var="categoria" emptyMessage="Não há categorias para serem exibidas" 
+		<p:dataTable id="dtCategoria" value="#{categoriaMB.allCategorias}"
+			var="categoria" emptyMessage="Não há categorias para serem exibidas"
 			editable="true" rowIndexVar="rowIndex">
-		
-			<p:ajax event="rowEdit" listener="#{categoriaMB.onRowEdit}" update=":formUiDados:msgs" />
-	       	<p:ajax event="rowEditCancel" listener="#{categoriaMB.onRowCancel}" update=":formUiDados:msgs" />
-		
+
+			<p:ajax event="rowEdit" listener="#{categoriaMB.onRowEdit}"
+				update=":formUiDados:msgs" />
+			<p:ajax event="rowEditCancel" listener="#{categoriaMB.onRowCancel}"
+				update=":formUiDados:msgs" />
+
 			<p:column headerText="Cód.">
-				<h:outputText value="#{categoria.id}"/>
+				<h:outputText value="#{categoria.id}" />
 			</p:column>
 			<p:column headerText="Categoria">
 				<p:cellEditor>
 					<f:facet name="output">
-						<h:outputText value="#{categoria.categoria}"/>
+						<h:outputText value="#{categoria.categoria}" />
 					</f:facet>
-               		<f:facet name="input">
-               			<p:inputText id="modelInput" value="#{categoria.categoria}" style="width:100%" />
-               		</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{categoria.categoria}"
+							style="width:100%" />
+					</f:facet>
 				</p:cellEditor>
 			</p:column>
 			<p:column headerText="Alterar">
-				<p:rowEditor/>
+				<p:rowEditor />
 			</p:column>
 			<p:column headerText="Apagar">
-				<p:commandButton id="btnApagarCategoria" icon="ui-icon-close" title="Apagar Categoria" action="#{categoriaMB.removerCategoria()}" 
-					immediate="true" update=":formUiDados:dtCategoria :formUiDados:msgs" widgetVar="formUiDados_btnApagarCategoria_#{rowIndex}">
-					<f:setPropertyActionListener target="#{categoriaMB.categoria}" value="#{categoria}"/>
-					<f:ajax/>
+				<p:commandButton id="btnApagarCategoria" icon="ui-icon-close"
+					title="Apagar Categoria" action="#{categoriaMB.removerCategoria()}"
+					immediate="true"
+					update=":formUiDados:dtCategoria :formUiDados:msgs"
+					widgetVar="formUiDados_btnApagarCategoria_#{rowIndex}">
+					<f:setPropertyActionListener target="#{categoriaMB.categoria}"
+						value="#{categoria}" />
+					<f:ajax />
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
-		
+
 	</ui:define>
 </ui:composition>

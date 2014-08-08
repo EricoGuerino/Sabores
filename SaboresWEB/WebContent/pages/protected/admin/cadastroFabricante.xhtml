@@ -5,20 +5,29 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-	
+	xmlns:p="http://primefaces.org/ui">
+
 	<ui:define name="cadastrar">
 		<script type="text/javascript">
 			var title='CADASTRO | FABRICANTE';
 			document.getElementsByTagName('title')[0].innerHTML = title;
 		</script>
-		<cadastros:cadastroAdministrativo valor="#{fabricanteMB.fabricante.fabricante}" titulo_do_cadastro="Cadastro de Fabricantes"
-			requiredPlaceHolderTitle="Digite um Fabricante"/> <br />
-		<p:commandButton value="Enviar" action="#{fabricanteMB.salvarFabricante()}" resetValues="true" update="@form">
-			<f:setPropertyActionListener target="#{fabricanteMB.fabricante}" value="#{fabricanteMB.fabricante}"/>
+		<cadastros:cadastroAdministrativo
+			valor="#{fabricanteMB.fabricante.fabricante}"
+			titulo_do_cadastro="Cadastro de Fabricantes"
+			requiredPlaceHolderTitle="Digite um Fabricante" />
+		<br />
+		<p:commandButton value="Enviar"
+			action="#{fabricanteMB.salvarFabricante()}" resetValues="true"
+			update="@form">
+			<f:setPropertyActionListener target="#{fabricanteMB.fabricante}"
+				value="#{fabricanteMB.fabricante}" />
 		</p:commandButton>
-		<p:commandButton value="Cancelar" action="toCadastrosAdministrativos" immediate="true"/> <br />
-		<p:commandLink value="administracao" action="toAdministracao" immediate="true"/>
-	</ui:define>	
-	
+		<p:commandButton value="Cancelar" action="toCadastrosAdministrativos"
+			immediate="true" />
+		<br />
+		<p:commandLink value="administracao" action="toAdministracao"
+			immediate="true" />
+	</ui:define>
+
 </ui:composition>

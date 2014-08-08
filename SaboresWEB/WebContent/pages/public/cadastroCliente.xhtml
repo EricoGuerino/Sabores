@@ -6,76 +6,115 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<title>CADASTRO | CLIENTES</title>
+	<title>CADASTRO | CLIENTES</title>
 </h:head>
 <h:body>
-	<h:form>
+	<h:form prependId="false">
 		<p:panelGrid columns="1">
 			<dados:dadosGeraisEmpresa
 				seguimento="#{clienteMB.cliente.seguimento}"
 				nome_do_contato="#{clienteMB.cliente.nomeDoContato}"
 				ie="#{clienteMB.cliente.ie}" cnpj="#{clienteMB.cliente.cnpj}"
 				razao_social="#{clienteMB.cliente.razaoSocial}"
-				site_do_cliente="#{clienteMB.cliente.siteDoCliente}" />
+				site_do_cliente="#{clienteMB.cliente.siteDoCliente}"
+				lista_de_tipos_estabelecimentos="#{clienteMB.listaTiposEstabelecimentos}" />
 
 			<dados:cadastroEmails
-				email_principal="#{clienteMB.cliente.email.emailPrincipal}"
-				email_alternativo1="#{clienteMB.cliente.email.emailAlternativo1}"
-				email_alternativo2="#{clienteMB.cliente.email.emailAlternativo2}"
-				email_alternativo3="#{clienteMB.cliente.email.emailAlternativo3}"
-				email_alternativo4="#{clienteMB.cliente.email.emailAlternativo4}" />
+				email_principal="#{clienteMB.email.emailPrincipal}"
+				email_alternativo1="#{clienteMB.email.emailAlternativo1}"
+				email_alternativo2="#{clienteMB.email.emailAlternativo2}"
+				email_alternativo3="#{clienteMB.email.emailAlternativo3}"
+				email_alternativo4="#{clienteMB.email.emailAlternativo4}" />
 
 			<dados:cadastroTelefones
-				fixo_principal="#{clienteMB.cliente.telefone.telefonePrincipal}"
-				fixo_alternativo="#{clienteMB.cliente.telefone.telefoneAlternativo}"
-				cel_principal="#{clienteMB.cliente.telefone.celularPrincipal}"
-				cel_alternativo="#{clienteMB.cliente.telefone.celularAlternativo}"
-				fax="#{clienteMB.cliente.telefone.fax}" />
+				fixo_principal="#{clienteMB.telefone.telefonePrincipal}"
+				fixo_alternativo="#{clienteMB.telefone.telefoneAlternativo}"
+				cel_principal="#{clienteMB.telefone.celularPrincipal}"
+				cel_alternativo="#{clienteMB.telefone.celularAlternativo}"
+				fax="#{clienteMB.telefone.fax}" />
 
-			<dados:endereco 
-				tipo_de_endereco="ESTABELECIMENTO"
-				valor_cep="#{clienteMB.endereco.cep}"
-				valor_tipo="#{clienteMB.endereco.tipoLogradouro}"
-				valor_logradouro="#{clienteMB.endereco.logradouro}"
-				valor_numero="#{clienteMB.endereco.numero}"
-				valor_bairro="#{clienteMB.endereco.bairro}"
-				valor_estado="#{clienteMB.endereco.uf}"
-				valor_cidade="#{clienteMB.endereco.cidade}"
-				valor_pais="#{clienteMB.endereco.pais}"
-				valor_lista_estados="#{enderecoMB.listaDeEstados}"
-				listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
-				valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
+			<p:panelGrid columns="1">
+				<dados:endereco tipo_de_endereco="ESTABELECIMENTO"
+					valor_cep="#{clienteMB.estabelecimento.cep}"
+					valor_tipo="#{clienteMB.estabelecimento.tipoLogradouro}"
+					valor_logradouro="#{clienteMB.estabelecimento.logradouro}"
+					valor_numero="#{clienteMB.estabelecimento.numero}"
+					valor_bairro="#{clienteMB.estabelecimento.bairro}"
+					valor_estado="#{clienteMB.estabelecimento.uf}"
+					valor_cidade="#{clienteMB.estabelecimento.cidade}"
+					valor_pais="#{clienteMB.estabelecimento.pais}"
+					valor_lista_estados="#{enderecoMB.listaDeEstados}"
+					listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
+					valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
 
-			<dados:endereco
-				tipo_de_endereco="ENTREGA"
-				valor_cep="#{clienteMB.endereco.cep}"
-				valor_tipo="#{clienteMB.endereco.tipoLogradouro}"
-				valor_logradouro="#{clienteMB.endereco.logradouro}"
-				valor_numero="#{clienteMB.endereco.numero}"
-				valor_bairro="#{clienteMB.endereco.bairro}"
-				valor_estado="#{clienteMB.endereco.uf}"
-				valor_cidade="#{clienteMB.endereco.cidade}"
-				valor_pais="#{clienteMB.endereco.pais}"
-				valor_lista_estados="#{enderecoMB.listaDeEstados}"
-				listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
-				valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
+				<p:panelGrid id="pnlEndEntrega" columns="1">
+					<p:panelGrid columns="2">
+						<p:selectBooleanCheckbox
+							valueChangeListener="#{enderecoMB.mostrarEntrega}"
+							value="#{enderecoMB.entrega}" immediate="true">
+							<p:ajax process="@this" update="pnlEndEntrega" />
+						</p:selectBooleanCheckbox>
+						<h:outputText value="Cadastrar Endereço de Entrega?" />
+					</p:panelGrid>
+					<p:panelGrid columns="1" rendered="#{enderecoMB.entrega}">
+						<dados:endereco tipo_de_endereco="ENTREGA"
+							valor_cep="#{clienteMB.entrega.cep}"
+							valor_tipo="#{clienteMB.entrega.tipoLogradouro}"
+							valor_logradouro="#{clienteMB.entrega.logradouro}"
+							valor_numero="#{clienteMB.entrega.numero}"
+							valor_bairro="#{clienteMB.entrega.bairro}"
+							valor_estado="#{clienteMB.entrega.uf}"
+							valor_cidade="#{clienteMB.entrega.cidade}"
+							valor_pais="#{clienteMB.entrega.pais}"
+							valor_lista_estados="#{enderecoMB.listaDeEstados}"
+							listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
+							valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
+					</p:panelGrid>
+				</p:panelGrid>
 
-			<dados:endereco 
-				tipo_de_endereco="COBRANÇA"
-				valor_cep="#{clienteMB.endereco.cep}"
-				valor_tipo="#{clienteMB.endereco.tipoLogradouro}"
-				valor_logradouro="#{clienteMB.endereco.logradouro}"
-				valor_numero="#{clienteMB.endereco.numero}"
-				valor_bairro="#{clienteMB.endereco.bairro}"
-				valor_estado="#{clienteMB.endereco.uf}"
-				valor_cidade="#{clienteMB.endereco.cidade}"
-				valor_pais="#{clienteMB.endereco.pais}"
-				valor_lista_estados="#{enderecoMB.listaDeEstados}"
-				listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
-				valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
+				<p:panelGrid id="pnlEndCobranca" columns="1">
+					<p:panelGrid columns="2">
+						<p:selectBooleanCheckbox
+							valueChangeListener="#{enderecoMB.mostrarCobranca}"
+							value="#{enderecoMB.cobranca}" immediate="true">
+							<p:ajax process="@this" update="pnlEndCobranca" />
+						</p:selectBooleanCheckbox>
+						<h:outputText value="Cadastrar Endereço de Cobrança?" />
+					</p:panelGrid>
+					<p:panelGrid columns="1" rendered="#{enderecoMB.cobranca}">
+						<dados:endereco tipo_de_endereco="COBRANÇA"
+							valor_cep="#{clienteMB.cobranca.cep}"
+							valor_tipo="#{clienteMB.cobranca.tipoLogradouro}"
+							valor_logradouro="#{clienteMB.cobranca.logradouro}"
+							valor_numero="#{clienteMB.cobranca.numero}"
+							valor_bairro="#{clienteMB.cobranca.bairro}"
+							valor_estado="#{clienteMB.cobranca.uf}"
+							valor_cidade="#{clienteMB.cobranca.cidade}"
+							valor_pais="#{clienteMB.cobranca.pais}"
+							valor_lista_estados="#{enderecoMB.listaDeEstados}"
+							listener="#{enderecoMB.atualizarListaCidadesPorEstado}"
+							valor_lista_cidades="#{enderecoMB.listaDeCidades}" />
+					</p:panelGrid>
+				</p:panelGrid>
+				<p:panelGrid>
+					<p:selectBooleanCheckbox
+						valueChangeListener="#{clienteMB.exportarValoresEstabParaEntregaCobranca}">
+						<p:ajax process="@this" />
+					</p:selectBooleanCheckbox>
+				</p:panelGrid>
+			</p:panelGrid>
 			<p:panelGrid columns="2">
-				<p:commandButton value="Enviar" />
-				<p:commandButton value="Cancelar" />
+				<p:commandButton value="Enviar"
+					action="#{clienteMB.salvarCliente()}">
+					<f:setPropertyActionListener target="#{clienteMB.cliente}" value="#{clienteMB.cliente}"/>
+					<f:setPropertyActionListener target="#{clienteMB.email}" value="#{clienteMB.email}"/>
+					<f:setPropertyActionListener target="#{clienteMB.telefone}" value="#{clienteMB.telefone}"/>
+					<f:setPropertyActionListener target="#{clienteMB.estabelecimento}" value="#{clienteMB.estabelecimento}"/>
+					<f:setPropertyActionListener target="#{clienteMB.entrega}" value="#{clienteMB.entrega}"/>
+					<f:setPropertyActionListener target="#{clienteMB.cobranca}" value="#{clienteMB.cobranca}"/>
+				</p:commandButton>
+				<p:commandButton value="Cancelar" immediate="true"
+					action="toSabores" />
 			</p:panelGrid>
 		</p:panelGrid>
 	</h:form>

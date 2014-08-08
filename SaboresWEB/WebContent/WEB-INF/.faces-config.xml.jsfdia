@@ -9,46 +9,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#protected#admin#administracao.xhtml"
   PATH="/pages/protected/admin/administracao.xhtml"
-  SHAPE="728,304,50,25" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#pages#protected#admin#administracao.xhtml:0"
-   NAME="item" PATH="/pages/protected/admin/administracao.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="toCadastroCategoria::#pages#protected#admin#cadastroCategoria.xhtml"
-    NAME="output" PATH="/pages/protected/admin/cadastroCategoria.xhtml"
-    TARGET="rules:#pages#protected#admin#cadastroCategoria.xhtml"
-    TITLE="toCadastroCategoria" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="toCadastroFabricante::#pages#protected#admin#cadastroFabricante.xhtml"
-    NAME="output1"
-    PATH="/pages/protected/admin/cadastroFabricante.xhtml"
-    TARGET="rules:#pages#protected#admin#cadastroFabricante.xhtml"
-    TITLE="toCadastroFabricante" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="toCadastroTipoEstabelecimento::#pages#protected#admin#cadastroTipoEstabelecimento.xhtml"
-    NAME="output2"
-    PATH="/pages/protected/admin/cadastroTipoEstabelecimento.xhtml"
-    TARGET="rules:#pages#protected#admin#cadastroTipoEstabelecimento.xhtml"
-    TITLE="toCadastroTipoEstabelecimento" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="toCategorias::#pages#protected#admin#tabelasDeDados#listarCategorias.xhtml"
-    NAME="output3"
-    PATH="/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml"
-    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarCategorias.xhtml"
-    TITLE="toCategorias" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="toFabricantes::#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
-    NAME="output4"
-    PATH="/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml"
-    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
-    TITLE="toFabricantes" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="toTiposEstabelecimento::#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
-    NAME="output5"
-    PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
-    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
-    TITLE="toTiposEstabelecimento" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
+  SHAPE="728,304,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM
   NAME="rules:#pages#protected#admin#cadastroCategoria.xhtml"
   PATH="/pages/protected/admin/cadastroCategoria.xhtml"
@@ -199,6 +160,47 @@
     PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
     TARGET="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
     TITLE="refresh" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#*"
+  PATH="/pages/protected/admin/*" SHAPE="1040,481,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#protected#admin#*:0" NAME="item"
+   PATH="/pages/protected/admin/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="toCadastroCategoria::#pages#protected#admin#cadastroCategoria.xhtml"
+    NAME="output" PATH="/pages/protected/admin/cadastroCategoria.xhtml"
+    TARGET="rules:#pages#protected#admin#cadastroCategoria.xhtml"
+    TITLE="toCadastroCategoria" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toCadastroFabricante::#pages#protected#admin#cadastroFabricante.xhtml"
+    NAME="output1"
+    PATH="/pages/protected/admin/cadastroFabricante.xhtml"
+    TARGET="rules:#pages#protected#admin#cadastroFabricante.xhtml"
+    TITLE="toCadastroFabricante" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toCadastroTipoEstabelecimento::#pages#protected#admin#cadastroTipoEstabelecimento.xhtml"
+    NAME="output2"
+    PATH="/pages/protected/admin/cadastroTipoEstabelecimento.xhtml"
+    TARGET="rules:#pages#protected#admin#cadastroTipoEstabelecimento.xhtml"
+    TITLE="toCadastroTipoEstabelecimento" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toCategorias::#pages#protected#admin#tabelasDeDados#listarCategorias.xhtml"
+    NAME="output3"
+    PATH="/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml"
+    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarCategorias.xhtml"
+    TITLE="toCategorias" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toFabricantes::#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
+    NAME="output4"
+    PATH="/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml"
+    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
+    TITLE="toFabricantes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toTiposEstabelecimento::#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
+    NAME="output5"
+    PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
+    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
+    TITLE="toTiposEstabelecimento" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

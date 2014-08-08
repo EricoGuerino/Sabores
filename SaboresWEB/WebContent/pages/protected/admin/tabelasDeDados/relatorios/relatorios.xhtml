@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>SABORES | RELATÓRIOS</title>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+        	<p:commandButton value="PDF" actionListener="#{demoBean.PDF}"/>
+            <p:commandButton value="DOCX" actionListener="#{demoBean.DOCX}"/>
+            <p:commandButton value="XLSX" actionListener="#{demoBean.XLSX}"/>
+            <p:commandButton value="ODT" actionListener="#{demoBean.ODT}"/>
+            <p:commandButton value="PPT" actionListener="#{demoBean.PPT}"/>
+        </h:form>
+        <p:dataTable value="#{demoBean.listOfUser}" var="user">
+        	<p:column>
+            	<f:facet name="header">
+                	User Name
+                </f:facet>
+                #{user.userId}
+            </p:column>
+            
+            <p:column>
+                <f:facet name="header">
+                    Password
+                </f:facet>
+                #{user.password}
+            </p:column>
+        </p:dataTable>
+    </h:body>
+</html>
