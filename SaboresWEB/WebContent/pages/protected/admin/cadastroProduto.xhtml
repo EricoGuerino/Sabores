@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      template="/pages/protected/admin/administracao.xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:define name="cadastrar">
+	<script type="text/javascript">
+			var title='CADASTRO | PRODUTO';
+			document.getElementsByTagName('title')[0].innerHTML = title;
+		</script>
+	<h:form>
+		<p:growl autoUpdate="true" escape="false" showDetail="true" showSummary="true"/>
+		<p:panelGrid columns="1">
+			<p:panelGrid columns="1">
+				<h1><h:outputText value="CADASTRO DE DADOS GERAIS DO PRODUTO" /></h1>
+			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:outputLabel for="produto" value="Nome do Produto"/>
+				<p:inputText id="produto" value="#{produtoMB.produto.produto}" placeholder="Nome do Produto"/>
+				
+				<p:outputLabel for="categoria" value="Categoria do Produto: "/>
+				<p:selectOneMenu value="#{produtoMB.produto.categoria}">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+					<f:selectItems value="#{produtoMB.allCategorias}" var="cat" itemLabel="#{cat.categoria}" itemValue="#{cat}"/>
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="fabricante" value="Fabricante do Produto: "/>
+				<p:selectOneMenu value="#{produtoMB.produto.fabricante}">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+					<f:selectItems value="#{produtoMB.allFabricante}" var="fab" itemLabel="#{fab.fabricante}" itemValue="#{fab}"/>
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="dsc" value="Descrição do Produto"/>
+				<p:inputText value="#{produtoMB.produto.descricao}" placeholder="Descriçao do Produto"/>
+				
+				<p:outputLabel for="argumento" value="Argumento de Venda do Produto"/>
+				<p:inputTextarea id="argumento" value="#{produtoMB.produto.argumentoDeVenda}" placeholder="Digite um Argumento de Venda para o Produto" rows="5" cols="20"/>
+				
+				<p:outputLabel for="validade" value="Período de Validade: "/>	
+				<p:inputText id="validade" value="#{produtoMB.produto.periocoDeValidade}"/>
+			</p:panelGrid>
+			<p:panelGrid columns="1">
+				<h1><h:outputText value="CADASTRO DA FOTO DO PRODUTO" /></h1>
+			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:graphicImage id="foto" height="90px" width="90px" value="#{produtoMB.produto.foto}" rendered="#{produtoMB.mostrarGraphicImage}"/>
+				<p:fileUpload fileUploadListener="#{produtoMB.fotoDoProdutoHandler}" mode="advanced" dragDropSupport="true"
+	           		update="foto" sizeLimit="100000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+			</p:panelGrid>
+			<p:panelGrid columns="1">
+				<h1><h:outputText value="CADASTRO DE NUTRICIONAIS DO PRODUTO" /></h1>
+			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:outputLabel for="acucar" value="Possui Açúcar?"/>
+				<p:selectBooleanCheckbox id="acucar" value="#{produtoMB.produto.acucar}"/>
+				
+				<p:outputLabel for="lactose" value="Possui Lactose?"/>
+				<p:selectBooleanCheckbox id="lactose" value="#{produtoMB.produto.lactose}"/>
+				
+				<p:outputLabel for="gluten" value="Possui Glúten?"/>
+				<p:selectBooleanCheckbox id="gluten" value="#{produtoMB.produto.gluten}"/>
+			</p:panelGrid>	
+		</p:panelGrid>
+	</h:form>
+</ui:define>
+</ui:composition>

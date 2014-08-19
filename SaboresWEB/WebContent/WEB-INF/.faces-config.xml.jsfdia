@@ -184,23 +184,49 @@
     TARGET="rules:#pages#protected#admin#cadastroTipoEstabelecimento.xhtml"
     TITLE="toCadastroTipoEstabelecimento" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
+    ID="toCadastroProduto::#pages#protected#admin#cadastroProduto.xhtml"
+    NAME="output3" PATH="/pages/protected/admin/cadastroProduto.xhtml"
+    TARGET="rules:#pages#protected#admin#cadastroProduto.xhtml"
+    TITLE="toCadastroProduto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toCadastroPrecoEstoque::#pages#protected#admin#modificarPrecoEstoque.xhtml"
+    NAME="output4"
+    PATH="/pages/protected/admin/modificarPrecoEstoque.xhtml"
+    TARGET="rules:#pages#protected#admin#modificarPrecoEstoque.xhtml"
+    TITLE="toCadastroPrecoEstoque" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
     ID="toCategorias::#pages#protected#admin#tabelasDeDados#listarCategorias.xhtml"
-    NAME="output3"
+    NAME="output5"
     PATH="/pages/protected/admin/tabelasDeDados/listarCategorias.xhtml"
     TARGET="rules:#pages#protected#admin#tabelasDeDados#listarCategorias.xhtml"
     TITLE="toCategorias" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#cadastroProduto.xhtml"
+  PATH="/pages/protected/admin/cadastroProduto.xhtml"
+  SHAPE="1552,593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#protected#admin#cadastroProduto.xhtml:0" NAME="item"
+   PATH="/pages/protected/admin/cadastroProduto.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="toFabricantes::#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
-    NAME="output4"
-    PATH="/pages/protected/admin/tabelasDeDados/listarFabricantes.xhtml"
-    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarFabricantes.xhtml"
-    TITLE="toFabricantes" model-entity="JSFProcessItemOutput"/>
+    ID="toAdministracao::#pages#protected#admin#administracao.xhtml"
+    NAME="output" PATH="/pages/protected/admin/administracao.xhtml"
+    TARGET="rules:#pages#protected#admin#administracao.xhtml"
+    TITLE="toAdministracao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#protected#admin#modificarPrecoEstoque.xhtml"
+  PATH="/pages/protected/admin/modificarPrecoEstoque.xhtml"
+  SHAPE="1552,593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#protected#admin#modificarPrecoEstoque.xhtml:0"
+   NAME="item" PATH="/pages/protected/admin/modificarPrecoEstoque.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="toTiposEstabelecimento::#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
-    NAME="output5"
-    PATH="/pages/protected/admin/tabelasDeDados/listarTiposEstabelecimento.xhtml"
-    TARGET="rules:#pages#protected#admin#tabelasDeDados#listarTiposEstabelecimento.xhtml"
-    TITLE="toTiposEstabelecimento" model-entity="JSFProcessItemOutput"/>
+    ID="toAdministracao::#pages#protected#admin#administracao.xhtml"
+    NAME="output" PATH="/pages/protected/admin/administracao.xhtml"
+    TARGET="rules:#pages#protected#admin#administracao.xhtml"
+    TITLE="toAdministracao" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

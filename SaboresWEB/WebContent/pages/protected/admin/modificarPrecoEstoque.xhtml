@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		template="/pages/protected/admin/administracao.xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+      
+    <ui:define name="cadastrar">
+    	<script type="text/javascript">
+			var title='CADASTRO | PREÇO / ESTOQUE';
+			document.getElementsByTagName('title')[0].innerHTML = title;
+		</script>
+        <h1><h:outputText value="ADICIONAR | ALTERAR PREÇO E ESTOQUE"/></h1>
+		
+       	<h:form prependId="false">
+       		<p:growl id="msg_mod_preco_estoque" autoUpdate="true" escape="false" showSummary="true" showDetail="true"/>
+       		
+       		<p:contextMenu for="tabelaDeProdutos" widgetVar="widgetVar_ctxMenu_tabEstoquePreco">   
+		       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('widgetVar_tabEstoquePreco').showCellEditor();return false;"/>  
+		       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('widgetVar_ctxMenu_tabEstoquePreco').hide()"/>  
+		   </p:contextMenu>
+       		
+       		<p:dataTable 
+       			id="tabEstoquePreco" value="#{produtoMB.allProdutos}" var="produto" paginator="true" rows="50" emptyMessage="Sem Registros"
+				rowIndexVar="rowIndex" rendered="#{not empty produtoMB.allProdutos}" widgetVar="widgetVar_tabEstoquePreco">
+				
+				<f:facet name="header"><h:outputText value="Produtos Cadastrados"/></f:facet>
+				<p:ajax event="cellEdit" listener="#{produtoMB.onCellEdit}" update="msg_mod_preco_estoque" />
+				
+				<p:column style="text-align:center;" headerText ="Id" sortBy="#{produto.id}" filterBy="#{produto.id}">	
+					<h:outputText value="#{produto.id}"/>
+				</p:column>
+							
+				<p:column headerText="Produto" sortBy="#{produto.produto}" filterBy="#{produto.produto}">
+					<p:commandLink id="ver_detalhes" value="#{produto.produto}" action="#{produtosMB.visualizarProduto(produto)}"/>
+				</p:column >
+				
+				<p:column headerText="Editar Estoque" style="text-align:center;">
+					<p:cellEditor>
+		               <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
+		               <f:facet name="input"><p:inputText id="edita_estoque" value="#{produto.estoque}" style="width:100%"/></f:facet>
+		           	</p:cellEditor>
+				</p:column >
+				
+				<p:column headerText="Editar Preço" style="text-align:center;">
+					<p:cellEditor>
+		               <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
+		               <f:facet name="input"><p:inputText id="edita_preco" value="#{produto.preco}" style="width:100%"/></f:facet>
+		           	</p:cellEditor>
+				</p:column >
+				
+	        </p:dataTable>
+	        <p:commandButton id="novo_produto" action="#{produtosMB.criar()}" value="Novo Produto"/>
+		</h:form>
+        
+    </ui:define>
+</ui:composition>
