@@ -9,7 +9,7 @@ import br.com.sabores.ejb.facade.CategoriaFacade;
 import br.com.sabores.ejb.model.Categoria;
 
 @SuppressWarnings("serial")
-public class CategoriaController implements Controller<Categoria>, Serializable
+public class CategoriaController extends AbstractController implements Controller<Categoria>, Serializable
 {
 	@EJB
 	private CategoriaFacade categoriaFacade;

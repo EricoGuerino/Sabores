@@ -1,6 +1,7 @@
 package br.com.sabores.web.managedbeans;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -16,11 +17,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.component.api.UIColumn;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.UploadedFile;
+
+import com.sun.mail.iap.ByteArray;
 
 import br.com.sabores.ejb.model.Categoria;
 import br.com.sabores.ejb.model.Fabricante;
@@ -129,6 +133,11 @@ public class ProdutoMB implements Serializable
         stream.read(bytes);
        
         this.produto.setFoto(new DefaultStreamedContent(stream, formato, nome));
+    }
+    
+    public void editarProduto()
+    {
+    	RequestContext.getCurrentInstance().openDialog("toEdicaoProdutoDialog");
     }
     
     public void alterarProduto()

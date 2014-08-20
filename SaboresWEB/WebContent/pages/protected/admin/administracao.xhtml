@@ -23,26 +23,25 @@
 			<p:submenu label="Tabelas de Dados">
 				<p:menuitem value="Categoria" action="toCategorias" />
 				<p:menuitem value="Fabricante" action="toFabricantes" />
-				<p:menuitem value="Tipo de Estabelecimento"
-					action="toTiposEstabelecimento" />
-				
-				<p:menuitem value="Cliente" />
-				<p:menuitem value="Produto" />
-				<p:menuitem value="Preço" />
-				<p:menuitem value="Estoque" />
+				<p:menuitem value="Tipo de Estabelecimento" action="toTiposEstabelecimento" />
+				<p:menuitem value="Cliente" action="toClientes"/>
+				<p:menuitem value="Produto" action="toProdutos"/>
 				<p:menuitem value="Listas de Pedidos" />
 			</p:submenu>
 			<p:submenu label="Relatórios">
 			</p:submenu>
 		</p:menubar>
 	</h:form>
+	<h:form id="formUiAdmHome">
+		<p:growl id="msgs" autoUpdate="true" showDetail="true" showSummary="true" />
+		<ui:insert name="admhome"></ui:insert>
+	</h:form>
 	<h:form id="formUiInsert">
-		<p:growl id="msgs" autoUpdate="true" showDetail="true"
-			showSummary="true" />
+		<p:growl id="msgs" autoUpdate="true" showDetail="true" showSummary="true" />
 		<ui:insert name="cadastrar"></ui:insert>
 	</h:form>
 	<h:form id="formUiDados">
-		<p:growl id="msgs" showDetail="true" showSummary="true" />
+		<p:growl id="msgs" autoUpdate="true" showDetail="true" showSummary="true" />
 		<ui:insert name="visualizar"></ui:insert>
 	</h:form>
 </body>

@@ -9,7 +9,7 @@ import br.com.sabores.ejb.facade.FabricanteFacade;
 import br.com.sabores.ejb.model.Fabricante;
 
 @SuppressWarnings("serial")
-public class FabricanteController implements Controller<Fabricante>,Serializable
+public class FabricanteController extends AbstractController implements Controller<Fabricante>,Serializable
 {
 	@EJB
 	private FabricanteFacade fabricanteFacade;

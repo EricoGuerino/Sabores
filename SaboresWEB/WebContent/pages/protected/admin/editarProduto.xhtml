@@ -1,19 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      template="/pages/protected/admin/administracao.xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"> 
 
-<ui:define name="cadastrar">
-	<script type="text/javascript">
-		var title='CADASTRO | PRODUTO';
-		document.getElementsByTagName('title')[0].innerHTML = title;
-	</script>
-		<p:panelGrid columns="1">
+<h:head>
+	<title><h:outputText value="EDIÇÃO | PRODUTO" /></title>
+	<style type="text/css">
+	    .ui-widget {font-size: 90%;}
+	</style>
+</h:head> 
+<h:body> 
+	<p:panelGrid columns="1">
 			<p:panelGrid columns="1">
-				<h1><h:outputText value="CADASTRO DE DADOS GERAIS DO PRODUTO" /></h1>
+				<h1><h:outputText value="EDIÇÃO DE DADOS GERAIS DO PRODUTO" /></h1>
 			</p:panelGrid>
 			<p:panelGrid columns="2">
 				<p:outputLabel for="produto" value="Nome do Produto"/>
@@ -41,7 +42,7 @@
 				<p:inputText id="validade" value="#{produtoMB.produto.periocoDeValidade}"/>
 			</p:panelGrid>
 			<p:panelGrid columns="1">
-				<h1><h:outputText value="CADASTRO DA FOTO DO PRODUTO" /></h1>
+				<h1><h:outputText value="EDIÇÃO DA FOTO DO PRODUTO" /></h1>
 			</p:panelGrid>
 			<p:panelGrid columns="2">
 				<p:graphicImage id="foto" height="90px" width="90px" value="#{produtoMB.produto.foto}" rendered="#{produtoMB.mostrarGraphicImage}"/>
@@ -49,7 +50,7 @@
 	           		update="foto" sizeLimit="100000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 			</p:panelGrid>
 			<p:panelGrid columns="1">
-				<h1><h:outputText value="CADASTRO DE INFORMAÇÕES NUTRICIONAIS DO PRODUTO" /></h1>
+				<h1><h:outputText value="EDIÇÃO DE INFORMAÇÕES NUTRICIONAIS DO PRODUTO" /></h1>
 			</p:panelGrid>
 			<p:panelGrid columns="2">
 				<p:outputLabel for="acucar" value="Possui Açúcar?"/>
@@ -62,7 +63,7 @@
 				<p:selectBooleanCheckbox id="gluten" value="#{produtoMB.produto.gluten}"/>
 			</p:panelGrid>
 			<p:panelGrid columns="1">
-				<h1><h:outputText value="CADASTRO DE PREÇO / ESTOQUE DO PRODUTO" /></h1>
+				<h1><h:outputText value="EDIÇÃO DE PREÇO / ESTOQUE DO PRODUTO" /></h1>
 			</p:panelGrid>
 			<p:panelGrid columns="2">
 				<p:outputLabel for="preco" value="Preço do Produto"/>
@@ -71,6 +72,12 @@
 				<p:outputLabel for="estoque" value="Estoque do Produto"/>
 				<p:inputText id="estoque" value="#{produtoMB.produto.estoque}" placeholder="Estoque do Produto"/>
 			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:commandButton value="Enviar" action="#{produtoMB.alterarProduto()}">
+					<f:setPropertyActionListener target="#{produtoMB.produto}" value="#{produtoMB.produto}" />
+				</p:commandButton>
+				<p:commandButton value="Cancelar" action="cancelar" immediate="true"/>
+			</p:panelGrid>
 		</p:panelGrid>
-</ui:define>
-</ui:composition>
+</h:body> 
+</html>

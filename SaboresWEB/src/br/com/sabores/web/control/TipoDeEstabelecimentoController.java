@@ -9,7 +9,7 @@ import br.com.sabores.ejb.facade.TipoDeEstabelecimentoFacade;
 import br.com.sabores.ejb.model.TipoDeEstabelecimento;
 
 @SuppressWarnings("serial")
-public class TipoDeEstabelecimentoController implements Controller<TipoDeEstabelecimento>,Serializable
+public class TipoDeEstabelecimentoController extends AbstractController implements Controller<TipoDeEstabelecimento>,Serializable
 {
 
 	@EJB

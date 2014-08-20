@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import br.com.sabores.ejb.facade.ProdutoFacade;
 import br.com.sabores.ejb.model.Produto;
 
-public class ProdutoController implements Controller<Produto>
+public class ProdutoController extends AbstractController implements Controller<Produto>
 {
 	@EJB
 	private ProdutoFacade produtoFacade;

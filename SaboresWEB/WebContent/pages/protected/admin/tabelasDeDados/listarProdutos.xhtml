@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/pages/protected/admin/administracao.xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+<ui:define name="visualizar"> 
+	<script type="text/javascript">
+		var title='ADMINISTRAR | PRODUTO';
+		document.getElementsByTagName('title')[0].innerHTML = title;
+	</script>
+	<h1>Produtos</h1>
+		<p:dataTable id="dtProdutos" value="#{produtoMB.allProdutos}"
+			var="prod" emptyMessage="Não há categorias para serem exibidas"
+			editable="true" rowIndexVar="rowIndex" filteredValue="#{produtoMB.produtoController.filteredValue}"
+			widgetVar="widgetVar_dtProdutos">
+
+			<p:ajax event="rowEdit" listener="#{categoriaMB.onRowEdit}"
+				update=":formUiDados:msgs" />
+			<p:ajax event="rowEditCancel" listener="#{categoriaMB.onRowCancel}"
+				update=":formUiDados:msgs" />
+
+			<p:column>
+				<h:inputHidden id="prod_id" value="#{prod.id}" />
+				<p:graphicImage id="prod_foto" value="#{prod.foto}"/>
+			</p:column>
+			
+			<p:column headerText="Categoria" filterBy="#{prod.categoria.categoria}" filterMatchMode="exact">
+				<f:facet name="filter">
+					<p:selectOneMenu id="prod_cat_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+						<f:selectItems value="#{produtoMB.allCategorias}" var="cat" itemLabel="#{cat.categoria}" itemValue="#{cat.categoria}"/>
+					</p:selectOneMenu>
+				</f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_cat_out" value="#{prod.categoria.categoria}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:selectOneMenu id="prod_cat_in" value="#{prod.categoria}">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+							<f:selectItems value="#{produtoMB.allCategorias}" var="cat" itemLabel="#{cat.categoria}" itemValue="#{cat}"/>
+						</p:selectOneMenu>
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Fabricante" filterBy="#{prod.fabricante.fabricante}" filterMatchMode="exact">
+				<f:facet name="input">
+					<p:selectOneMenu id="prod_fab_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+						<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+						<f:selectItems value="#{produtoMB.allFabricante}" var="fab" itemLabel="#{fab.fabricante}" itemValue="#{fab.fabricante}"/>
+					</p:selectOneMenu>
+				</f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_fab_out" value="#{prod.fabricante.fabricante}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:selectOneMenu id="prod_fab_in" value="#{prod.fabricante}">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+							<f:selectItems value="#{produtoMB.allFabricante}" var="fab" itemLabel="#{fab.fabricante}" itemValue="#{fab}"/>
+						</p:selectOneMenu>
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Produto" filterBy="#{prod.produto}" filterMatchMode="contains">
+				<p:commandLink action="view" actionListener="#{produtoMB.editarProduto()}">
+					<p:inputText id="prod_produto" value="#{prod.produto}" style="width:100%" />
+				</p:commandLink>
+			</p:column>
+			<p:column headerText="Descrição" filterBy="#{prod.descricao}" filterMatchMode="contains">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_desc_out" value="#{prod.descricao}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="prod_desc_in" value="#{prod.descricao}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Argumento">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_arg_out" value="#{prod.argumentoDeVenda}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="prod_arg_in" value="#{prod.argumentoDeVenda}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Validade" filterBy="#{prod.periocoDeValidade}" filterMatchMode="lte">
+				<f:facet name="filter">
+					<p:spinner id="prod_val_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+						<f:converter converterId="javax.faces.Integer" />
+					</p:spinner>
+				</f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_val_out" value="#{prod.periocoDeValidade}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="prod_val_in" value="#{prod.periocoDeValidade}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Açucar" filterBy="#{prod.acucar}" filterMatchMode="equals">
+				<f:facet name="filter">
+                <p:selectOneButton id="prod_acucar_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+                    <f:converter converterId="javax.faces.Boolean" />
+                    <f:selectItem itemLabel="T" itemValue="" />
+                    <f:selectItem itemLabel="S" itemValue="true" />
+                    <f:selectItem itemLabel="N" itemValue="false" />
+                </p:selectOneButton>
+            </f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<!-- selectBoolean do JSF para usar o readOnly que sei que vai ficar do jeito que quero -->
+						<h:selectBooleanCheckbox id="prod_acucar_out" value="#{prod.acucar}" readonly="true" />
+					</f:facet>
+					<f:facet name="input">
+						<p:selectBooleanCheckbox id="prod_acucar_in" value="#{prod.acucar}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Lactose" filterBy="#{prod.lactose}" filterMatchMode="equals">
+				<f:facet name="filter">
+	                <p:selectOneButton id="prod_lactose_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+	                    <f:converter converterId="javax.faces.Boolean" />
+	                    <f:selectItem itemLabel="T" itemValue="" />
+	                    <f:selectItem itemLabel="S" itemValue="true" />
+	                    <f:selectItem itemLabel="N" itemValue="false" />
+	                </p:selectOneButton>
+	            </f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<!-- selectBoolean do Primefaces, testando o disabled, para ver se tem um efeito semelhante ao readOnly -->
+						<p:selectBooleanCheckbox id="prod_lactose_out" value="#{prod.lactose}" disabled="true"/>
+					</f:facet>
+					<f:facet name="input">
+						<p:selectBooleanCheckbox id="prod_lactose_in" value="#{prod.lactose}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Glúten" filterBy="#{prod.gluten}" filterMatchMode="equals">
+				<f:facet name="filter">
+	               <p:selectOneButton id="prod_gluten_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+	                   <f:converter converterId="javax.faces.Boolean" />
+	                   <f:selectItem itemLabel="T" itemValue="" />
+	                   <f:selectItem itemLabel="S" itemValue="true" />
+	                   <f:selectItem itemLabel="N" itemValue="false" />
+	               </p:selectOneButton>
+	           </f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<!-- selectBoolean do Primefaces, testando o disabled, para ver se tem um efeito semelhante ao readOnly -->
+						<p:selectBooleanCheckbox id="prod_gluten_out" value="#{prod.gluten}" disabled="true"/>
+					</f:facet>
+					<f:facet name="input">
+						<p:selectBooleanCheckbox id="prod_lactose_in" value="#{prod.gluten}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Preço" filterBy="#{prod.preco}" filterFunction="#{produtoMB.produtoController.filterByPrice}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_preco_out" value="#{prod.preco}" >
+							<f:convertNumber currencySymbol="$" type="currency"/>
+						</h:outputText>
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="prod_preco_in" value="#{prod.preco}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="Estoque" filterBy="#{prod.estoque}" filterMatchMode="lte">
+				<f:facet name="filter">
+					<p:spinner id="prod_estoque_filter" onchange="PF('widgetVar_dtProdutos').filter()">
+						<f:converter converterId="javax.faces.Integer" />
+					</p:spinner>
+				</f:facet>
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="prod_estoque_out" value="#{prod.estoque}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="prod_estoque_in" value="#{prod.estoque}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="Alterar">
+				<p:rowEditor />
+			</p:column>
+			<p:column headerText="Apagar">
+				<p:commandButton id="btnApagarProduto" icon="ui-icon-close"
+					title="Apagar Categoria" action="#{produtoMB.removerProduto()}"
+					immediate="true"
+					update=":formUiDados:dtProdutos :formUiDados:msgs"
+					widgetVar="formUiDados_btnApagarProduto_#{rowIndex}">
+					<f:setPropertyActionListener target="#{produtoMB.produto}" value="#{prod}" />
+					<f:ajax />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	
+</ui:define> 
+</ui:composition>

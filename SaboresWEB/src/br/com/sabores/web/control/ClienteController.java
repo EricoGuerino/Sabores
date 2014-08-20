@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import br.com.sabores.ejb.facade.ClienteFacade;
 import br.com.sabores.ejb.model.Cliente;
 
-public class ClienteController implements Controller<Cliente>
+public class ClienteController extends AbstractController implements Controller<Cliente>
 {
 
 	@EJB
